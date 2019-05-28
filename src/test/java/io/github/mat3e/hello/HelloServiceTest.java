@@ -19,7 +19,7 @@ public class HelloServiceTest {
 
         LangRepository mockRepository = alwaysReturningHelloRepository();
         HelloService SUT = new HelloService(mockRepository);
-        String result = SUT.prepareGreeting(null, "-1");
+        String result = SUT.prepareGreeting(null, -1);
         assertEquals(WELCOME + " " + HelloService.FALLBACK_NAME + "!", result);
     }
 
@@ -37,17 +37,17 @@ public class HelloServiceTest {
         LangRepository mockRepository = alwaysReturningHelloRepository();
         HelloService SUT = new HelloService(mockRepository);
         String name = "test";
-        String result = SUT.prepareGreeting(name, "-1" + "");
+        String result = SUT.prepareGreeting(name, -1);
         assertEquals(WELCOME + " " + name + "!", result);
     }
 
-    @Test
-    public void testNullLangPrepareGreetingReturnsGreetingWithFallbackIdLang() throws Exception {
-        LangRepository mockRepository = fallbackLangIdRepository();
-        HelloService SUT = new HelloService(mockRepository);
-        String result = SUT.prepareGreeting(null, "abc");
-        assertEquals(FALLBACK_ID_WELCOME + " " + HelloService.FALLBACK_NAME + "!", result);
-    }
+//    @Test
+//    public void testNullLangPrepareGreetingReturnsGreetingWithFallbackIdLang() throws Exception {
+//        LangRepository mockRepository = fallbackLangIdRepository();
+//        HelloService SUT = new HelloService(mockRepository);
+//        String result = SUT.prepareGreeting(null, "abc");
+//        assertEquals(FALLBACK_ID_WELCOME + " " + HelloService.FALLBACK_NAME + "!", result);
+//    }
 
     @Test
     public void testTextLangPrepareGreetingReturnsGreetingWithFallbackIdLang() throws Exception {
@@ -73,7 +73,7 @@ public class HelloServiceTest {
     public void testNonExistingLangPrepareGreetingReturnsGreetingWithFallbackLang() throws Exception {
         LangRepository mockRepository = fallbackLangRepository();
         HelloService SUT = new HelloService(mockRepository);
-        String result = SUT.prepareGreeting(null, "-1");
+        String result = SUT.prepareGreeting(null, -1);
         assertEquals(HelloService.FALLBACK_LANG.getWelcomeMsg() + " " + HelloService.FALLBACK_NAME + "!", result);
     }
 

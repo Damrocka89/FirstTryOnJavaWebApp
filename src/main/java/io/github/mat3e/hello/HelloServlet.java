@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Optional;
 
 @WebServlet(name = "Hello", urlPatterns = {"/api"})
 public class HelloServlet extends HttpServlet {
@@ -37,7 +38,13 @@ public class HelloServlet extends HttpServlet {
         String query = req.getQueryString();
         logger.info("Got request with parameters: " + req.getParameterMap());
         String lang = req.getParameter(LANG_PARAM);
+        Integer langId = null;
+        try {
+            langId = Integer.valueOf(lang);
+        } catch (NumberFormatException e) {
+            logger.warn("Non-numeric language id used: " + lang);
+        }
         String name = req.getParameter(NAME_PARAM);
-        resp.getWriter().write(service.prepareGreeting(name, lang));
+        resp.getWriter().write(service.prepareGreeting(name, langId));
     }
 }
