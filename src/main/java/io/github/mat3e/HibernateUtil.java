@@ -5,9 +5,9 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
-class HibernateUtil {
+public class HibernateUtil {
 
-    private static final SessionFactory sessionFactory=buildSessionFactory();
+    private static final SessionFactory sessionFactory = buildSessionFactory();
 
     private static SessionFactory buildSessionFactory() {
         // A SessionFactory is set up once for an application!
@@ -24,7 +24,7 @@ class HibernateUtil {
         }
     }
 
-    static SessionFactory getSessionFactory(){
+    public static SessionFactory getSessionFactory() {
         return sessionFactory;
     }
 

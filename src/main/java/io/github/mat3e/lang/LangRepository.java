@@ -1,13 +1,13 @@
-package io.github.mat3e;
+package io.github.mat3e.lang;
 
+import io.github.mat3e.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-class LangRepository {
+public class LangRepository {
 
     List<Lang> findAll(){
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -20,7 +20,7 @@ class LangRepository {
         return result;
     }
 
-    Optional<Lang> findById(Integer id) {
+    public Optional<Lang> findById(Integer id) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
 
